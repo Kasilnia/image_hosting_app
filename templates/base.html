@@ -1,0 +1,19 @@
+{% load static i18n %}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Images hosting page{% endblock %}</title>
+
+        <!-- og tags-->
+        <meta property=”og:title” content="{% trans 'Images hosting' %}" />
+
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body>
+            {% block page_header %}{% endblock %}
+            {% block content %}{% endblock %}
+            {% block page_footer %}{% endblock %}
+            {% block extra_js %}{% endblock %}
+    </body>
+</html>
