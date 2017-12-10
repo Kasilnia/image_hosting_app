@@ -133,3 +133,10 @@ STATIC_URL = '/static/'
 # --- MEDIA ---
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(dirname(dirname(BASE_DIR)), 'media')
+
+
+# Easy-thumbnails
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
