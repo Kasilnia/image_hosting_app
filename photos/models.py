@@ -21,4 +21,4 @@ class Photo(models.Model):
     class Meta:
         verbose_name = _('Photo')
         verbose_name_plural = _('Photos')
-        ordering = ('title',)
+        ordering = ('title',)  # TODO Add sorting after datetime
