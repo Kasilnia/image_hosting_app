@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
+{% load cropping %}
 
 {% block content %}
-	<h1>{% trans 'Dashboard' %}</h1>
+    <h1>{% trans 'Dashboard' %}</h1>
+    <ul>
+        {% for photo in object_list %}
+            <li>
+                <h3>{{ photo.title }}</h3>
+                <img src="{% cropped_thumbnail photo 'cropping' %}" alt="{{ photo.title }}">
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
