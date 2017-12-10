@@ -12,7 +12,7 @@ class Photo(models.Model):
     title = models.CharField(_('Title'), max_length=150)
     image = models.ImageField(_('Image'), upload_to='photos')
     cropping = ImageRatioField(
-        'image', '100x100', size_warning=True,
+        'image', '600x600', size_warning=True,
         verbose_name=_('Photo cropping'))
 
     def __str__(self):
