@@ -3,4 +3,11 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-# Register your models here.
+from image_cropping import ImageCroppingMixin
+
+from .models import Photo
+
+
+@admin.register(Photo)
+class PhotoAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    pass
