@@ -11,6 +11,9 @@
             <li>
                 <h3>{{ photo.title }}</h3>
                 <img src="{% cropped_thumbnail photo 'cropping' %}" alt="{{ photo.title }}">
+                <form action="{% url 'photos:delete_photo' pk=photo.pk %}" method="post">{% csrf_token %}
+                    <input type="submit" value="{% trans 'Delete' %}" />
+                </form>
             </li>
         {% endfor %}
     </ul>
