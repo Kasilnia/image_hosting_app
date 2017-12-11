@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -32,3 +33,7 @@ class Photo(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Photo, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('photos:detail_photo',
+                            kwargs={'pk': self.pk, 'slug': self.slug})

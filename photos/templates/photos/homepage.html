@@ -9,8 +9,10 @@
     <ul>
         {% for photo in object_list %}
             <li>
-                <h3>{{ photo.title }}</h3>
-                <img src="{% cropped_thumbnail photo 'cropping' %}" alt="{{ photo.title }}">
+                <a href="{{ photo.get_absolute_url }}">
+                    <h3>{{ photo.title }}</h3>
+                    <img src="{% cropped_thumbnail photo 'cropping' %}" alt="{{ photo.title }}">
+                </a>
                 <form action="{% url 'photos:delete_photo' pk=photo.pk %}"
                       method="post"
                       onsubmit='return confirm("{% blocktrans with photo_title=photo.title %}Do you really want to delete the photo \"{{ photo_title }}\"?{% endblocktrans %}");''>
