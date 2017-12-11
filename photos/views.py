@@ -19,5 +19,6 @@ class PhotoCreateView(CreateView):
 
 
 class PhotoDeleteView(DeleteView):
+    """PhotoDeleteView removes photo object."""
     model = Photo
     success_url = reverse_lazy('photos:homepage')
