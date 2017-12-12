@@ -20,7 +20,6 @@ class PhotoCreateView(CreateView):
     """PhotoCreateView creates new photo object."""
     model = Photo
     fields = ['title', 'image']
-    success_url = '/'  # TODO Redirect to details page
 
 
 class PhotoDeleteView(DeleteView):
