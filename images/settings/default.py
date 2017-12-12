@@ -23,6 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '52qs^h+$dfwu1yv98%&=_7ytpixcx#r#13i-t=9zxus^w!kgl^'
 
+GOOGLE_CLOUD_API_KEY = ''
+
+LABEL_DETECTION_MAX_RESULTS = 10
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
