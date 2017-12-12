@@ -5,6 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,6 +20,8 @@ class Photo(models.Model):
     """Photo model stores image file."""
 
     title = models.CharField(_('Title'), max_length=150)
+    created_date = models.DateTimeField(
+        _('Created date'), default=timezone.now)
     image = models.ImageField(_('Image'), upload_to='photos')
     cropping = ImageRatioField(
         'image', '600x600', size_warning=True,
@@ -36,7 +39,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = _('Photo')
         verbose_name_plural = _('Photos')
-        ordering = ('title',)  # TODO Add sorting after datetime
+        ordering = ('-created_date',)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
