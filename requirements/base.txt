@@ -3,3 +3,4 @@ psycopg2==2.7.3.2
 Pillow==4.3.0
 django-image-cropping==1.1.0
 easy-thumbnails==2.5
+jsonfield==2.0.2

@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DeleteView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 
@@ -9,6 +10,10 @@ class HomepageView(ListView):
     """HomepageView displays photos list and menu."""
     model = Photo
     template_name = 'photos/homepage.html'
+
+
+class PhotoDetailView(DetailView):
+    model = Photo
 
 
 class PhotoCreateView(CreateView):
