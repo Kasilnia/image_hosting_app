@@ -46,6 +46,12 @@ class Photo(models.Model):
         return reverse_lazy('photos:detail_photo',
                             kwargs={'pk': self.pk, 'slug': self.slug})
 
+    def report_labels(self):
+        try:
+            return self.visual_report['responses'][0]['labelAnnotations']
+        except:
+            return None
+
 
 @receiver(post_save, sender=Photo)
 def vision_analysis(sender, **kwargs):
