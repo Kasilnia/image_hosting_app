@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load cropping %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for photo in object_list %}
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="{{ photo.get_absolute_url }}" target="_blank">
+                    <div class="caption"><p>{{ photo.title }}</p></div>
+                    <img src="{% cropped_thumbnail photo 'cropping' %}" alt="{{ photo.title }}" style="width:100%">
+                    <div class="caption">
+                        <form action="{% url 'photos:delete_photo' pk=photo.pk %}"
+                              method="post"
+                              onsubmit='return confirm("{% blocktrans with photo_title=photo.title %}Do you really want to delete the photo \"{{ photo_title }}\"?{% endblocktrans %}");''>
+                            {% csrf_token %}
+                            <input type="submit" value="{% trans 'Delete' %}" class="btn btn-default" />
+                        </form>
+                  </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

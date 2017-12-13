@@ -23,8 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '52qs^h+$dfwu1yv98%&=_7ytpixcx#r#13i-t=9zxus^w!kgl^'
 
+GOOGLE_CLOUD_API_KEY = ''
+
+LABEL_DETECTION_MAX_RESULTS = 10
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'easy_thumbnails',
+    'image_cropping',
 
     'photos',
 ]
@@ -129,3 +136,10 @@ STATIC_URL = '/static/'
 # --- MEDIA ---
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(dirname(dirname(BASE_DIR)), 'media')
+
+
+# Easy-thumbnails
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
